@@ -1,2 +1,1 @@
-from . import normalizer
-from .normalizer import IBITNormalizer
+from .normalizer import *

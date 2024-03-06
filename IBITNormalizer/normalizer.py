@@ -2,6 +2,7 @@ from hazm import Normalizer
 import os
 import glob
 from re import sub
+from pathlib import Path
 
 
 class IBITNormalizer(Normalizer):
@@ -70,17 +71,22 @@ class IBITNormalizer(Normalizer):
         self._remove_stop_words = kwargs["remove_stop_words"]
         del kwargs["remove_stop_words"]
 
-        self.dir_path = os.path.dirname(os.path.realpath(__file__)) + "/"
+        self.dir_path = Path(os.path.dirname(os.path.realpath(__file__)))
 
-        self.stop_words_paths = glob.glob(
-            self.dir_path + 'resource/Stopwords/*/*.txt')
+        if self._remove_stop_words:
 
-        self.dic1_path = self.dir_path + 'resource/Normalizer/Dic1_new.txt'
-        self.dic2_path = self.dir_path + 'resource/Normalizer/Dic2_new.txt'
-        self.dic3_path = self.dir_path + 'resource/Normalizer/Dic3_new.txt'
+            self.stop_words_paths = glob.glob(
+                str(self.dir_path / 'resource' / 'Stopwords' / '**/*.txt'), recursive=True)
 
-        self.__read_normalizer_word()
-        self.__read_stop_words()
+            self.__read_stop_words()
+
+        if self._space_correction:
+
+            self.dic1_path = self.dir_path / 'resource' / 'Normalizer' / 'Dic1_new.txt'
+            self.dic2_path = self.dir_path / 'resource' / 'Normalizer' / 'Dic2_new.txt'
+            self.dic3_path = self.dir_path / 'resource' / 'Normalizer' / 'Dic3_new.txt'
+
+            self.__read_normalizer_word()
 
         super(IBITNormalizer, self).__init__(*args, **kwargs)
 

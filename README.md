@@ -3,7 +3,7 @@ Simple persian text-normalizer base on hazm lib
 
 ## install
 ```
-pip install IBITNormalizer
+pip install IBITNormalizer --upgrade
 ```
 
 ## import
