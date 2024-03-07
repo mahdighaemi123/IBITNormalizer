@@ -94,7 +94,7 @@ class IBITNormalizer(Normalizer):
         """متن را نرمال‌سازی می‌کند.
 
         Examples:
-            >>> normalizer = Normalizer()
+            >>> normalizer = IBITNormalizer()
             >>> normalizer.normalize('اِعلاممممم کَرد : « زمین لرزه ای به بُزرگیِ 6 دهم ریشتر ...»')
             'اعلام کرد: «زمین‌لرزه‌ای به بزرگی ۶ دهم ریشتر …»'
             >>> normalizer.normalize('')
@@ -125,7 +125,7 @@ class IBITNormalizer(Normalizer):
     def replace_to_standard_chrs(self, doc_string):
         """ کاراکتر های غیر استاندارد فارسی رو با استاندارد هاش عوض میکنه
         Examples:
-            >>> normalizer = Normalizer()
+            >>> normalizer = IBITNormalizer()
             >>> normalizer.replace_to_standard_chrs('ي')
             'ی'
 
@@ -188,7 +188,7 @@ class IBITNormalizer(Normalizer):
     def space_correction(self, doc_string):
         """ فاصله و نیم فاصله هارو درست میکنه
         Examples:
-            >>> normalizer = Normalizer()
+            >>> normalizer = IBITNormalizer()
             >>> normalizer.space_correction('سیب هایشان')
             'سیب[  نیم فاصله ]هایشان'
 
@@ -281,7 +281,7 @@ class IBITNormalizer(Normalizer):
     def remove_stop_words(self, text):
         """
         Examples:
-        >>> normalizer = Normalizer()
+        >>> normalizer = IBITNormalizer()
         >>> normalizer.remove_stop_words('از سیب')
         'سیب'
 
